@@ -7,7 +7,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 
-
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -15,7 +14,6 @@ logger = logging.getLogger(__name__)
 # Create a base class for SQLAlchemy models
 class Base(DeclarativeBase):
     pass
-
 
 # Initialize SQLAlchemy with the base class
 db = SQLAlchemy(model_class=Base)
@@ -34,20 +32,23 @@ else:
     template_dir = os.path.join(BASE_DIR, "templates")
     static_dir = os.path.join(BASE_DIR, "static")
 
-# Create the Flask application with explicit template folder
-logger.info(f"Setting template_folder={template_dir}, static_folder={static_dir}")
-app = Flask(__name__, 
-            template_folder=template_dir,
-            static_folder=static_dir)
-
-# Log important paths to help with debugging
-logger.info(f"Current working directory: {os.getcwd()}")
+# Log the directories to help with debugging
 logger.info(f"Template directory exists: {os.path.exists(template_dir)}")
 if os.path.exists(template_dir):
     template_files = os.listdir(template_dir)
     logger.info(f"Template files: {template_files}")
 else:
     logger.error(f"Template directory NOT FOUND: {template_dir}")
+
+# Create the Flask application with explicit template folder
+app = Flask(__name__, 
+            template_folder=template_dir,
+            static_folder=static_dir)
+
+# Log important paths to help with debugging
+logger.info(f"Current working directory: {os.getcwd()}")
+logger.info(f"Template directory: {template_dir}")
+logger.info(f"Static directory: {static_dir}")
 
 app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key")
 
