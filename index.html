@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Library Book Locator - Find Your Books{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h1 class="display-4 mb-4">Library Book Locator</h1>
+        <p class="lead">Find the exact shelf location of any book in our library</p>
+        
+        <div class="search-container my-5">
+            <form id="search-form" action="{{ url_for('search') }}" method="get">
+                <div class="input-group input-group-lg">
+                    <input type="text" id="search-input" name="query" class="form-control" placeholder="Search by title, author, or ISBN" aria-label="Search">
+                    <button id="clear-search" type="button" class="btn btn-outline-secondary">
+                        <i data-feather="x"></i>
+                    </button>
+                    <button id="search-button" class="btn btn-primary" type="submit">
+                        <i data-feather="search"></i> Search
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="features mt-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 book-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i data-feather="map-pin" style="width: 48px; height: 48px;"></i>
+                            </div>
+                            <h5 class="card-title">Precise Location</h5>
+                            <p class="card-text">Find the exact shelf, column, and row for any book</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 book-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i data-feather="check-circle" style="width: 48px; height: 48px;"></i>
+                            </div>
+                            <h5 class="card-title">Availability Status</h5>
+                            <p class="card-text">Check if a book is available or currently issued</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 book-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mb-3">
+                                <i data-feather="info" style="width: 48px; height: 48px;"></i>
+                            </div>
+                            <h5 class="card-title">Book Details</h5>
+                            <p class="card-text">View complete information about each book</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="how-to-use mt-5">
+            <h2 class="mb-4">How to Use</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ol class="text-start">
+                        <li>Enter the title, author, or ISBN of the book you're looking for in the search box above.</li>
+                        <li>Click the "Search" button or press Enter to see results.</li>
+                        <li>Browse through the search results to find your book.</li>
+                        <li>Click on any book to see detailed information, including its exact location in the library.</li>
+                        <li>Use the shelf, column, and row information to locate your book.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
